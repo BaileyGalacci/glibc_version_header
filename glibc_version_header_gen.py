@@ -38,7 +38,7 @@ def extract_versions_from_installed_folder(folder, version, arch):
         # See https://web.archive.org/web/20170124195801/https://www.akkadia.org/drepper/symbol-versioning section Static Linker
         command = "readelf -Ws '" + f + "' | grep \" [^ ]*@@GLIBC_[0-9.]*$\" -o"
         file_data = [x.decode("utf-8").strip() for x in
-                     subprocess.check_output(['/bin/bash', '-c', 'set -o pipefail; ' + command]).split()]
+                     subprocess.check_output(['/bin/bash', '-c', 'set -o pipefail; ', command]).split()]
 
         library_name = f.split("/")[-1]
         if Version(2, 17) <= version <= Version(2, 27):
